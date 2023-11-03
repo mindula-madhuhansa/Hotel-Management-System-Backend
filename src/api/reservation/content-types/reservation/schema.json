@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reservations",
+  "info": {
+    "singularName": "reservation",
+    "pluralName": "reservations",
+    "displayName": "Reservation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "InDate": {
+      "type": "datetime",
+      "required": true,
+      "default": "2023-11-02T18:30:00.000Z"
+    },
+    "OutDate": {
+      "type": "datetime",
+      "default": "2023-11-02T18:30:00.000Z",
+      "required": true
+    },
+    "RoomTypes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::room-type.room-type",
+      "mappedBy": "reservation"
+    },
+    "RoomNumbers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::room.room",
+      "mappedBy": "Reservation"
+    },
+    "RoomCount": {
+      "type": "integer",
+      "required": true,
+      "default": 1,
+      "min": 1
+    },
+    "GuestCount": {
+      "type": "integer",
+      "required": true,
+      "default": 1,
+      "unique": false,
+      "min": 1
+    },
+    "Customer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::customer.customer"
+    }
+  }
+}

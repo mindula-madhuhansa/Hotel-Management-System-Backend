@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "room_types",
+  "info": {
+    "singularName": "room-type",
+    "pluralName": "room-types",
+    "displayName": "RoomType",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "RoomTypeName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "MaxGuestCapacity": {
+      "type": "integer",
+      "default": 1,
+      "required": true,
+      "min": 1
+    },
+    "RatePerNight": {
+      "type": "decimal",
+      "min": 4.99
+    },
+    "reservation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::reservation.reservation",
+      "inversedBy": "RoomTypes"
+    },
+    "AC": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

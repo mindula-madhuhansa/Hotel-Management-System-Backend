@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rooms",
+  "info": {
+    "singularName": "room",
+    "pluralName": "rooms",
+    "displayName": "Room"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "RoomNumber": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "RoomType": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::room-type.room-type"
+    },
+    "Reservation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::reservation.reservation",
+      "inversedBy": "RoomNumbers"
+    }
+  }
+}
